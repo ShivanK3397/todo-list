@@ -1,0 +1,14 @@
+header>div{
+    display: flex;
+    align-items: center;
+    gap:12px
+}
+
+body{
+    font-family: "Roboto";
+}
+
+img{
+    width: auto;
+    height: 32px;
+}
