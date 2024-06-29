@@ -64,3 +64,15 @@ img{
     height: 32px;
 }
 
+section{
+    display: flex;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    display: block;
+}
+
