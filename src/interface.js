@@ -1,9 +1,10 @@
 import { Task } from "./task.js";
 
-function addTask(title,date){
+function addTask(title,date,description){
     const taskTitle = title.value;
     const taskDate = date.value;
-    const task = new Task(taskTitle,taskDate);
+    const taskDescription = description.value;
+    const task = new Task(taskTitle,taskDate,taskDescription);
     const card = createTaskCard(task);
     const tasks= document.querySelector(".tasks");
     tasks.appendChild(card);
@@ -11,6 +12,9 @@ function addTask(title,date){
 }
 
 function createForm(){
+    const button = document.querySelector(".add-task");
+    button.remove();
+    const mainHeader = document.querySelector(".main-header")
     const content = document.querySelector(".form");
     const form = document.createElement("form");
 
@@ -36,20 +40,42 @@ function createForm(){
     dueDate.setAttribute("name","dueDate")
     dueDateLabel.setAttribute("for","due-date");
 
+    const descriptionContainer = document.createElement("div");
+    const description = document.createElement("input");
+    const descriptionLabel = document.createElement("label");
+    descriptionContainer.appendChild(descriptionLabel);
+    descriptionContainer.appendChild(description);
+    descriptionLabel.textContent="Description";
+    description.setAttribute("id","description");
+    description.setAttribute("name","description");
+    descriptionLabel.setAttribute("for","description");
+
     const submitButton = document.createElement("button");
-    submitButton.textContent="Submit"
+    submitButton.textContent="Submit";
+
+
   
 
     form.appendChild(titleContainer);
+    form.appendChild(descriptionContainer);
     form.appendChild(dateContainer);
     form.appendChild(submitButton);
     content.appendChild(form);
     submitButton.addEventListener("click",(event)=>{
-        
         event.preventDefault();
-        addTask(title,dueDate);
-        hideForm();
+        if(title.value===""){
         
+            alert("Please Fill in Title Page");
+        }
+        else{
+       
+        addTask(title,dueDate,description);
+        hideForm();
+        const newButton = document.createElement("button");
+        newButton.classList.add(".add-task");
+        mainHeader.append(button);
+        
+        }
         
     });
 }
@@ -60,6 +86,8 @@ function createTaskCard(task){
     title.textContent=task.getTitle();
     const date = document.createElement("p");
     date.textContent=task.getDueDate();
+    const description = document.createElement("p");
+    description.textContent=task.getDescription();
     card.appendChild(title);
     card.appendChild(date);
 

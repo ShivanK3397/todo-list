@@ -13,6 +13,9 @@ class Task{
     getDueDate(){
         return this.dueDate;
     }
+    getDescription(){
+        return this.description;
+    }
 }
 
 export{Task};
