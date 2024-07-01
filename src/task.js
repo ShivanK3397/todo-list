@@ -3,8 +3,16 @@ class Task{
         this.title=title;
         this.description=description;
         this.dueDate=dueDate;
-        this.checked=false;
+        this.descriptionShown = false
       
+    }
+
+    setDescriptionShown(value){
+        this.descriptionShown=value;
+    }
+
+    getDescriptionShown(){
+        return this.descriptionShown;
     }
 
     getTitle(){

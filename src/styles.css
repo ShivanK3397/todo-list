@@ -77,11 +77,17 @@ input{
 .task{
   display: flex;
   gap: 8px;
-  background-color:#fca5a5;
+
   padding: 8px;
   align-items: center;
+}
+.card-container{
+  border-radius: 8px;
+  border: 2px solid;
+}
 
-
+.description{
+  margin-left: 8px;
 }
 
 input[type="checkbox"]{

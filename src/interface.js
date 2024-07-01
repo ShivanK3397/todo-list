@@ -1,7 +1,8 @@
 import { Task } from "./task.js";
 import "./styles.css";
-import { compareAsc,format } from "date-fns";
-import { ca } from "date-fns/locale";
+import { format } from "date-fns";
+import { ta } from "date-fns/locale";
+
 
 function addTask(title,date,description){
     const taskTitle = title.value;
@@ -85,38 +86,54 @@ function createForm(){
 }
 
 function createTaskCard(task){
+    const cardContainer = document.createElement("div");
     const card = document.createElement("div");
+    cardContainer.addEventListener("click",()=>{
+        if(task.getDescriptionShown()===true){
+            removeDescription();
+            task.setDescriptionShown(false);
+        }
+        else{
+        const description = showDescription(task);
+        cardContainer.appendChild(description);
+        task.setDescriptionShown(true);
+        }
+    })
+    cardContainer.classList.add("card-container");
     card.classList.add("task");
     const title = document.createElement("p");
     title.textContent=task.getTitle();
     const date = document.createElement("p");
     
     if (task.getDueDate()===""){
-
+      
     }
     else{
     date.textContent=format(new Date(task.getDueDate()), "yyyy-MM-dd");
     }
-    const description = document.createElement("p");
-    description.textContent=task.getDescription();
+   
     const deleteButton = document.createElement("button");
     deleteButton.textContent="Delete";
     deleteButton.addEventListener("click",()=>{
-        card.remove()
+        cardContainer.remove()
     })
 
     const checkbox = document.createElement("input");
     checkbox.setAttribute("type","checkbox");
+    checkbox.addEventListener("click",(event)=>{
+        event.stopPropagation();
+    })
 
     
     card.appendChild(checkbox);
     card.appendChild(title);
-    card.appendChild(description);
+    
     card.appendChild(date);
     card.appendChild(deleteButton);
+    cardContainer.appendChild(card);
     
 
-    return card;
+    return cardContainer;
 
 
 }
@@ -124,5 +141,18 @@ function createTaskCard(task){
 function hideForm(){
     const form = document.querySelector("form");
     form.remove();
+}
+function showDescription(task){
+    const description = document.createElement("div");
+    description.classList.add("description");
+    description.textContent="Description: "+task.getDescription();
+    return description;
+
+
+}
+
+function removeDescription(){
+    const description = document.querySelector(".description");
+    description.remove();
 }
 export {createForm,addTask};
