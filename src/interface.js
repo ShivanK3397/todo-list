@@ -1,4 +1,7 @@
 import { Task } from "./task.js";
+import "./styles.css";
+import { compareAsc,format } from "date-fns";
+import { ca } from "date-fns/locale";
 
 function addTask(title,date,description){
     const taskTitle = title.value;
@@ -6,6 +9,7 @@ function addTask(title,date,description){
     const taskDescription = description.value;
     const task = new Task(taskTitle,taskDate,taskDescription);
     const card = createTaskCard(task);
+
     const tasks= document.querySelector(".tasks");
     tasks.appendChild(card);
 
@@ -82,14 +86,35 @@ function createForm(){
 
 function createTaskCard(task){
     const card = document.createElement("div");
+    card.classList.add("task");
     const title = document.createElement("p");
     title.textContent=task.getTitle();
     const date = document.createElement("p");
-    date.textContent=task.getDueDate();
+    
+    if (task.getDueDate()===""){
+
+    }
+    else{
+    date.textContent=format(new Date(task.getDueDate()), "yyyy-MM-dd");
+    }
     const description = document.createElement("p");
     description.textContent=task.getDescription();
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent="Delete";
+    deleteButton.addEventListener("click",()=>{
+        card.remove()
+    })
+
+    const checkbox = document.createElement("input");
+    checkbox.setAttribute("type","checkbox");
+
+    
+    card.appendChild(checkbox);
     card.appendChild(title);
+    card.appendChild(description);
     card.appendChild(date);
+    card.appendChild(deleteButton);
+    
 
     return card;
 

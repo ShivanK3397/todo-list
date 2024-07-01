@@ -50,7 +50,7 @@ header{
     align-items: center;
     gap:12px;
     padding: 8px 16px;
-    background-color: gray;
+    background-color: #67e8f9;
     
    
 }
@@ -64,9 +64,7 @@ img{
     height: 32px;
 }
 
-section{
-    display: flex;
-}
+
 
 form{
     display: flex;
@@ -74,5 +72,45 @@ form{
 }
 input{
     display: block;
+}
+
+.task{
+  display: flex;
+  gap: 8px;
+  background-color:#fca5a5;
+  padding: 8px;
+  align-items: center;
+
+
+}
+
+input[type="checkbox"]{
+  appearance: none;
+  border: 1px solid;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+}
+
+input[type="checkbox"]:checked{
+  background-color: green;
+}
+
+.main-header,.tasks,.form{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 8px 0 8px 8px;
+}
+.tasks{
+  justify-content: center;
+}
+
+button{
+  width: fit-content;
+  border-radius: 8px;
+  background-color: #67e8f9;
+  margin-top: 8px;
 }
 
