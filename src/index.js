@@ -1,10 +1,17 @@
 import "./styles.css";
-import {createForm,addTask } from "./interface.js";
+import {createForm} from "./interface.js";
+import { createProjectForm } from "./projectInterface.js";
 
 
-const button = document.querySelector(".add-task");
-
-button.addEventListener("click",()=>{
+const taskButton = document.querySelector(".add-task");
+taskButton.addEventListener("click",()=>{
     createForm();
 })
+
+const projectButton = document.querySelector(".add-project");
+projectButton.addEventListener("click",()=>{
+    createProjectForm();
+})
+
+
 

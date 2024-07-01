@@ -1,6 +1,7 @@
 import { Task } from "./task.js";
 import "./styles.css";
 import { format } from "date-fns";
+import { Project } from "./project.js";
 import { ta } from "date-fns/locale";
 
 
@@ -65,6 +66,7 @@ function createForm(){
     form.appendChild(descriptionContainer);
     form.appendChild(dateContainer);
     form.appendChild(submitButton);
+    form.classList.add("task-form");
     content.appendChild(form);
     submitButton.addEventListener("click",(event)=>{
         event.preventDefault();
@@ -139,7 +141,7 @@ function createTaskCard(task){
 }
 
 function hideForm(){
-    const form = document.querySelector("form");
+    const form = document.querySelector(".task-form");
     form.remove();
 }
 function showDescription(task){
@@ -155,4 +157,8 @@ function removeDescription(){
     const description = document.querySelector(".description");
     description.remove();
 }
-export {createForm,addTask};
+
+
+
+
+export {createForm,addTask,hideForm};
