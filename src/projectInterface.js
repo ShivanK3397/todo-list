@@ -1,8 +1,8 @@
 import { Project } from "./project.js";
-import { addTask } from "./interface.js";
+import { addTask,createTaskCard } from "./interface.js";
 import { Task } from "./task.js";
 import { add } from "date-fns";
-import { currentProject } from "./index.js";
+import  {current } from "./index.js";
 
 
 
@@ -60,8 +60,9 @@ function createProject(title){
     newProject.textContent=title;
     projectContainer.appendChild(newProject);
     newProject.addEventListener("click",()=>{
-        //currentProject=project
-        newProjectTest(currentProject);
+        current.setProject(project);
+        newProjectTest(current.getProject());
+       
       
         
     })
@@ -69,11 +70,12 @@ function createProject(title){
 }
 
 function newProjectTest(project){
+    const button = document.querySelector(".add-task");
     const main = document.querySelector(".main");
     const mainHeader = document.createElement("div");
     main.remove();
-    const section = document.querySelector(".interface");
-    const newMain = document.querySelector("div");
+    const section = document.querySelector("section");
+    const newMain = document.createElement("div");
     newMain.classList.add("main");
     mainHeader.classList.add("main-header");
     const h2 = document.createElement("h2");
@@ -82,13 +84,18 @@ function newProjectTest(project){
     newButton.textContent="Add Task";
     newButton.classList.add("add-task");
     mainHeader.appendChild(h2);
-    mainHeader.appendChild(newButton);
+    mainHeader.appendChild(button);
     const tasks = document.createElement("div");
     tasks.classList.add("tasks");
     const form = document.createElement("div");
     form.classList.add("form");
     const array = project.test();
-    
+    console.log(array);
+    for (let i =0;i<array.length;i++){
+        console.log("test");
+        const div = createTaskCard(array[i]);
+        tasks.appendChild(div);
+    }
     newMain.appendChild(mainHeader);
     newMain.appendChild(tasks);
     newMain.appendChild(form);

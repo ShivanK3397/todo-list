@@ -2,9 +2,15 @@ import "./styles.css";
 import {createForm} from "./interface.js";
 import { createProjectForm,createProject } from "./projectInterface.js";
 import { Project } from "./project.js";
+import { currentProject } from "./currentproject.js";
 
 
-let currentProject = new Project("Inbox");
+const inbox = new Project("Inbox");
+
+const current = new currentProject(inbox);
+
+
+
 createProject("Inbox");
 
 
@@ -14,10 +20,11 @@ taskButton.addEventListener("click",()=>{
 })
 
 const projectButton = document.querySelector(".add-project");
-/*projectButton.addEventListener("click",()=>{
+projectButton.addEventListener("click",()=>{
     createProjectForm();
-})*/
+})
 
-export{currentProject};
+export {current};
+
 
 

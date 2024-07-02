@@ -2,17 +2,26 @@ import { Task } from "./task.js";
 import "./styles.css";
 import { format } from "date-fns";
 import { Project } from "./project.js";
-import { ta } from "date-fns/locale";
-import { currentProject } from "./index.js";
+import { da, ta } from "date-fns/locale";
+import {current}  from "./index.js";
 
 
 function addTask(title,date,description){
     const taskTitle = title.value;
-    const taskDate = date.value;
+    let taskDate;
+    if(typeof date==="string"){
+      
+         taskDate=date;
+    }
+    else{
+       
+         taskDate = date.value;
+    }
     const taskDescription = description.value;
     const task = new Task(taskTitle,taskDate,taskDescription);
     const card = createTaskCard(task);
-    currentProject.addTasktoArray(task);
+    const project = current.getProject();
+    project.addTasktoArray(task);
     const tasks= document.querySelector(".tasks");
     tasks.appendChild(card);
 
@@ -164,4 +173,4 @@ function removeDescription(){
 
 
 
-export {createForm,addTask,hideForm};
+export {createForm,addTask,hideForm,createTaskCard};

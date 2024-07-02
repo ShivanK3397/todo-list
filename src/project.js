@@ -1,16 +1,18 @@
 
 
 class Project{
+    
 
     constructor(name){
         this.name = name;
-        this.tasks = [];
+        this._tasks=[];
+        
 
     }
 
+
     test(){
-        console.log("test");
-        return this.tasks;
+        return this._tasks;
     }
 
     getName(){
@@ -18,11 +20,15 @@ class Project{
     }
 
     addTasktoArray(task){
-        console.log(this.tasks);
-        this.tasks.push(task);
+        
+        this._tasks.push(task);
+        console.log(this._tasks);
     }
 
    
 }
+
+
+
 
 export{Project};
