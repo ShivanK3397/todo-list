@@ -10,8 +10,8 @@ const inbox = new Project("Inbox");
 const current = new currentProject(inbox);
 
 
+createProject(inbox);
 
-createProject("Inbox");
 
 
 const taskButton = document.querySelector(".add-task");
