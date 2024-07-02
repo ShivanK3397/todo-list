@@ -2,7 +2,7 @@ import { Project } from "./project.js";
 import { addTask,createTaskCard } from "./interface.js";
 import { Task } from "./task.js";
 import { add } from "date-fns";
-import  {current,inbox } from "./index.js";
+import  {current,projects } from "./index.js";
 
 
 
@@ -35,9 +35,18 @@ function createProjectForm(){
     content.appendChild(form);
     submitButton.addEventListener("click",(event)=>{
         event.preventDefault();
+        let nameUsed = false;
+        for (let i =0;i<projects.length;i++){
+            if (projects[i].getName()===title.value){
+                nameUsed=true;
+            }
+        }
         if(title.value===""){
         
             alert("Please Fill in Title Page");
+        }
+        else if(nameUsed){
+            alert("Project names must be unique");
         }
         else{
             const newButton = document.createElement("button");
@@ -54,6 +63,7 @@ function createProjectForm(){
 }
 
 function createProject(project){
+    projects.push(project);
     const projectContainer = document.querySelector(".projects");
     const newProject = document.createElement("p");
     newProject.textContent=project.getName();

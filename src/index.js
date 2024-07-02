@@ -9,6 +9,8 @@ const inbox = new Project("Inbox");
 
 const current = new currentProject(inbox);
 
+const projects =[];
+projects.push(inbox);
 
 createProject(inbox);
 
@@ -24,7 +26,7 @@ projectButton.addEventListener("click",()=>{
     createProjectForm();
 })
 
-export {current};
+export {current,projects};
 
 
 
