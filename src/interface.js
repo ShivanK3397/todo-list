@@ -18,9 +18,9 @@ function addTask(title,date,description){
          taskDate = date.value;
     }
     const taskDescription = description.value;
+    const project = current.getProject();
     const task = new Task(taskTitle,taskDate,taskDescription);
     const card = createTaskCard(task);
-    const project = current.getProject();
     project.addTasktoArray(task);
     const tasks= document.querySelector(".tasks");
     tasks.appendChild(card);
@@ -127,7 +127,11 @@ function createTaskCard(task){
     const deleteButton = document.createElement("button");
     deleteButton.textContent="Delete";
     deleteButton.addEventListener("click",()=>{
-        cardContainer.remove()
+        const array = current.getProject().test();
+        const index = array.indexOf(task);
+        current.getProject().removeTask(index);
+        cardContainer.remove();
+        
     })
 
     const checkbox = document.createElement("input");

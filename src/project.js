@@ -5,6 +5,7 @@ class Project{
 
     constructor(name){
         this.name = name;
+    
         this._tasks=[];
         
 
@@ -22,8 +23,12 @@ class Project{
     addTasktoArray(task){
         
         this._tasks.push(task);
-        console.log(this._tasks);
+    
     }
+    removeTask(index){
+        this._tasks.splice(index,1);
+    }
+
 
    
 }

@@ -96,7 +96,6 @@ function newProjectTest(project){
     const form = document.createElement("div");
     form.classList.add("form");
     const array = project.test();
-    console.log(array);
     for (let i =0;i<array.length;i++){
         const div = createTaskCard(array[i]);
         tasks.appendChild(div);

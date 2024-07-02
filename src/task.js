@@ -3,6 +3,7 @@ class Task{
         this.title=title;
         this.description=description;
         this.dueDate=dueDate;
+        
         this.descriptionShown = false
       
     }
@@ -25,6 +26,7 @@ class Task{
     getDescription(){
         return this.description;
     }
+
 }
 
 export{Task};
