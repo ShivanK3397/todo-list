@@ -1,8 +1,9 @@
 import "./styles.css";
 import {createForm} from "./interface.js";
-import { createProjectForm } from "./projectInterface.js";
+import { createProjectForm,createProject } from "./projectInterface.js";
 
 
+createProject("Inbox");
 const taskButton = document.querySelector(".add-task");
 taskButton.addEventListener("click",()=>{
     createForm();

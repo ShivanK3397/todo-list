@@ -1,4 +1,7 @@
 import { Project } from "./project.js";
+import { addTask } from "./interface.js";
+import { Task } from "./task.js";
+import { add } from "date-fns";
 
 
 function createProjectForm(){
@@ -39,6 +42,7 @@ function createProjectForm(){
             newButton.textContent="Add Project";
             newButton.classList.add("add-project");
             sideBarHeader.append(button);
+            createProject(title.value);
             hideForm();
 
         }
@@ -48,7 +52,18 @@ function createProjectForm(){
 }
 
 function createProject(title){
-    const project = new Project(title.value);
+    const project = new Project(title);
+    const projectContainer = document.querySelector(".projects");
+    const newProject = document.createElement("p");
+    newProject.textContent=title;
+    projectContainer.appendChild(newProject);
+    /*newProject.addEventListener("click",()=>{
+        const array = project.getTasks();
+        for (let i =0;i<array.length;i++){
+            addTask(array[i].getTitle(),array[i].getDueDate(),array[i].getDescription());
+        }
+    })
+    Project.setCurrent(project)*/;
 }
 
 
@@ -56,5 +71,5 @@ function hideForm(){
     const form = document.querySelector(".project-title");
     form.remove();
 }
-export{createProjectForm};
+export{createProjectForm,createProject};
 

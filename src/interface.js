@@ -11,6 +11,8 @@ function addTask(title,date,description){
     const taskDescription = description.value;
     const task = new Task(taskTitle,taskDate,taskDescription);
     const card = createTaskCard(task);
+    //const currentProject = Project.currentProject();
+    //currentProject.addTask(task);
 
     const tasks= document.querySelector(".tasks");
     tasks.appendChild(card);
@@ -155,7 +157,9 @@ function showDescription(task){
 
 function removeDescription(){
     const description = document.querySelector(".description");
-    description.remove();
+    if(description!==null){
+        description.remove();
+    }
 }
 
 
