@@ -1,3 +1,5 @@
+
+
 class Project{
 
     constructor(name){
@@ -6,21 +8,21 @@ class Project{
 
     }
 
-    getTasks(){
+    test(){
+        console.log("test");
         return this.tasks;
     }
 
-    addTask(task){
+    getName(){
+        return this.name;
+    }
+
+    addTasktoArray(task){
+        console.log(this.tasks);
         this.tasks.push(task);
     }
 
-    static setCurrent(value){
-        this.current=value;
-    }
-
-    static currentProject(){
-        return this.current;
-    }
+   
 }
 
 export{Project};

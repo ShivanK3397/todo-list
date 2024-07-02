@@ -2,6 +2,8 @@ import { Project } from "./project.js";
 import { addTask } from "./interface.js";
 import { Task } from "./task.js";
 import { add } from "date-fns";
+import { currentProject } from "./index.js";
+
 
 
 function createProjectForm(){
@@ -57,13 +59,44 @@ function createProject(title){
     const newProject = document.createElement("p");
     newProject.textContent=title;
     projectContainer.appendChild(newProject);
-    /*newProject.addEventListener("click",()=>{
-        const array = project.getTasks();
-        for (let i =0;i<array.length;i++){
-            addTask(array[i].getTitle(),array[i].getDueDate(),array[i].getDescription());
-        }
+    newProject.addEventListener("click",()=>{
+        //currentProject=project
+        newProjectTest(currentProject);
+      
+        
     })
-    Project.setCurrent(project)*/;
+    
+}
+
+function newProjectTest(project){
+    const main = document.querySelector(".main");
+    const mainHeader = document.createElement("div");
+    main.remove();
+    const section = document.querySelector(".interface");
+    const newMain = document.querySelector("div");
+    newMain.classList.add("main");
+    mainHeader.classList.add("main-header");
+    const h2 = document.createElement("h2");
+    h2.textContent=project.getName();
+    const newButton = document.createElement("button");
+    newButton.textContent="Add Task";
+    newButton.classList.add("add-task");
+    mainHeader.appendChild(h2);
+    mainHeader.appendChild(newButton);
+    const tasks = document.createElement("div");
+    tasks.classList.add("tasks");
+    const form = document.createElement("div");
+    form.classList.add("form");
+    const array = project.test();
+    
+    newMain.appendChild(mainHeader);
+    newMain.appendChild(tasks);
+    newMain.appendChild(form);
+    section.appendChild(newMain);
+
+
+
+
 }
 
 
@@ -72,4 +105,7 @@ function hideForm(){
     form.remove();
 }
 export{createProjectForm,createProject};
+
+
+
 

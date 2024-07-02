@@ -3,6 +3,7 @@ import "./styles.css";
 import { format } from "date-fns";
 import { Project } from "./project.js";
 import { ta } from "date-fns/locale";
+import { currentProject } from "./index.js";
 
 
 function addTask(title,date,description){
@@ -11,9 +12,7 @@ function addTask(title,date,description){
     const taskDescription = description.value;
     const task = new Task(taskTitle,taskDate,taskDescription);
     const card = createTaskCard(task);
-    //const currentProject = Project.currentProject();
-    //currentProject.addTask(task);
-
+    currentProject.addTasktoArray(task);
     const tasks= document.querySelector(".tasks");
     tasks.appendChild(card);
 
