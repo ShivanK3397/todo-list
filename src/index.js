@@ -26,7 +26,7 @@ projectButton.addEventListener("click",()=>{
     createProjectForm();
 })
 
-export {current,projects};
+export {current,projects,inbox};
 
 
 

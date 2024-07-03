@@ -2,7 +2,7 @@ import { Project } from "./project.js";
 import { addTask,createTaskCard } from "./interface.js";
 import { Task } from "./task.js";
 import { add } from "date-fns";
-import  {current,projects } from "./index.js";
+import  {current,projects,inbox } from "./index.js";
 
 
 
@@ -65,9 +65,30 @@ function createProjectForm(){
 function createProject(project){
     projects.push(project);
     const projectContainer = document.querySelector(".projects");
+    const div = document.createElement("div");
     const newProject = document.createElement("p");
     newProject.textContent=project.getName();
-    projectContainer.appendChild(newProject);
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent="Delete";
+    
+    if(project.getName()==="Inbox"){
+        div.appendChild(newProject);
+    }
+    else{
+        div.appendChild(newProject);
+        div.appendChild(deleteButton);
+    }
+    projectContainer.appendChild(div);
+
+    deleteButton.addEventListener("click",()=>{
+        const main = document.querySelector(".main");
+        current.setProject(inbox);
+        newProjectTest(current.getProject());
+        const index = projects.indexOf(project);
+        projects.splice(index,1);
+        div.remove();
+    })
+
     newProject.addEventListener("click",()=>{
         
         if(current.getProject().getName()===newProject.textContent){
