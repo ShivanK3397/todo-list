@@ -99,6 +99,7 @@ input{
   display: flex;
   gap:16px;
   align-items: center;
+  align-self: flex-end;
 }
 .card-container{
   border-radius: 8px;
@@ -176,4 +177,5 @@ section{
 .button-container{
   display: flex;
   justify-content: space-between;
+  max-width: 180px;
 }

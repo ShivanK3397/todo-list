@@ -130,7 +130,7 @@ function createTaskCard(task){
     const date = document.createElement("p");
     
     if (task.getDueDate()===""){
-      
+      date.textContent="No Due Date"
     }
     else{
     date.textContent=format(new Date(task.getDueDate()), "yyyy-MM-dd");
@@ -138,6 +138,7 @@ function createTaskCard(task){
    
     const deleteButton = document.createElement("button");
     deleteButton.textContent="Delete";
+    deleteButton.classList.add("cancel");
     deleteButton.addEventListener("click",()=>{
         const array = current.getProject().test();
         const index = array.indexOf(task);

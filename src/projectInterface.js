@@ -87,6 +87,7 @@ function createProject(project){
     const newProject = document.createElement("h3");
     newProject.textContent=project.getName();
     const deleteButton = document.createElement("button");
+    deleteButton.classList.add("cancel");
     deleteButton.textContent="Delete";
     
     if(project.getName()==="Inbox"){
