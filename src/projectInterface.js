@@ -26,11 +26,27 @@ function createProjectForm(){
     titleLabel.setAttribute("for","project-title");
 
 
+    
     const submitButton = document.createElement("button");
+    submitButton.classList.add("submit");
     submitButton.textContent="Submit";
 
+    const cancelButton = document.createElement("button");
+    cancelButton.classList.add("cancel");
+    cancelButton.textContent="Cancel";
+    cancelButton.addEventListener("click",()=>{
+        sideBarHeader.append(button);
+        hideForm();
+    })
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+    buttonContainer.appendChild(submitButton);
+    buttonContainer.appendChild(cancelButton);
+
+    
+
     form.appendChild(titleContainer);
-    form.appendChild(submitButton);
+    form.appendChild(buttonContainer);
     form.classList.add("project-title");
     content.appendChild(form);
     submitButton.addEventListener("click",(event)=>{
@@ -65,8 +81,10 @@ function createProjectForm(){
 function createProject(project){
     projects.push(project);
     const projectContainer = document.querySelector(".projects");
+    
     const div = document.createElement("div");
-    const newProject = document.createElement("p");
+    div.classList.add("project");
+    const newProject = document.createElement("h3");
     newProject.textContent=project.getName();
     const deleteButton = document.createElement("button");
     deleteButton.textContent="Delete";
@@ -79,9 +97,11 @@ function createProject(project){
         div.appendChild(deleteButton);
     }
     projectContainer.appendChild(div);
+    current.setProject(project);
+    newProjectTest(current.getProject());
 
     deleteButton.addEventListener("click",()=>{
-        const main = document.querySelector(".main");
+        
         current.setProject(inbox);
         newProjectTest(current.getProject());
         const index = projects.indexOf(project);

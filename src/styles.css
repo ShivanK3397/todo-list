@@ -55,6 +55,16 @@ header{
    
 }
 
+
+.sidebar{
+display: flex;
+flex-direction: column;
+}
+
+.sidebar *{
+  margin-left: 4px;
+}
+
 body{
     font-family: "Roboto";
     height: 100vh;
@@ -73,17 +83,28 @@ form{
 }
 input{
     display: block;
+    width: 180px;
 }
 
 .task{
-  display: flex;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
   gap: 8px;
   padding: 8px;
+  align-items: center;
+
+}
+
+.task>div{
+  display: flex;
+  gap:16px;
   align-items: center;
 }
 .card-container{
   border-radius: 8px;
   border: 2px solid;
+
+
 }
 
 .description{
@@ -123,6 +144,7 @@ button{
 section{
   display: flex;
   height: 100%;
+
 }
 .sidebar{
   background-color: #e5e7eb;
@@ -138,4 +160,20 @@ section{
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.project{
+  display: flex;
+  align-items: center;
+  gap:64px;
+}
+.submit{
+  background-color: #16a34a;
+}
+.cancel{
+  background-color: #dc2626;
+}
+.button-container{
+  display: flex;
+  justify-content: space-between;
 }

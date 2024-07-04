@@ -67,15 +67,27 @@ function createForm(){
     descriptionLabel.setAttribute("for","description");
 
     const submitButton = document.createElement("button");
+    submitButton.classList.add("submit");
     submitButton.textContent="Submit";
 
+    const cancelButton = document.createElement("button");
+    cancelButton.classList.add("cancel");
+    cancelButton.textContent="Cancel";
 
-  
+    cancelButton.addEventListener("click",()=>{
+        mainHeader.append(button);
+        hideForm();
+    })
+    
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+    buttonContainer.appendChild(submitButton);
+    buttonContainer.appendChild(cancelButton);
 
     form.appendChild(titleContainer);
     form.appendChild(descriptionContainer);
     form.appendChild(dateContainer);
-    form.appendChild(submitButton);
+    form.appendChild(buttonContainer);
     form.classList.add("task-form");
     content.appendChild(form);
     submitButton.addEventListener("click",(event)=>{
@@ -140,12 +152,17 @@ function createTaskCard(task){
         event.stopPropagation();
     })
 
+    const left = document.createElement("div");
+    const right = document.createElement("div");
     
-    card.appendChild(checkbox);
-    card.appendChild(title);
+
+    left.appendChild(checkbox);
+    left.appendChild(title);
     
-    card.appendChild(date);
-    card.appendChild(deleteButton);
+    right.appendChild(date);
+    right.appendChild(deleteButton);
+    card.appendChild(left);
+    card.appendChild(right);
     cardContainer.appendChild(card);
     
 
